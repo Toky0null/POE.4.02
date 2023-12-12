@@ -6,6 +6,7 @@ import view.components.header.HeaderComponent;
 import view.components.initial.InitialComponent;
 import view.components.navigation.UserNavigationComponent;
 import view.components.store.StoreComponent;
+import view.components.customers.CustomersComponent;
 import view.login.LoginComponent;
 
 import java.awt.Frame;
@@ -18,9 +19,10 @@ public class MenuComponent {
   private UserNavigationComponent navegacionUsuarioComponent;
   private InitialComponent inicioComponent;
   private ProductsComponent articleComponent;
-  private StoreComponent productosComponent;
+  private StoreComponent productStoreComponent;
 //  private ConfiguracionesComponent configuracionesComponent;
   private LoginComponent loginComponent;
+  private CustomersComponent clientesComponents;
 
   public MenuComponent(LoginComponent loginComponent) {
     this.loginComponent = loginComponent;
@@ -28,6 +30,7 @@ public class MenuComponent {
     this.barraTituloComponent = new HeaderComponent(this);
     this.navegacionUsuarioComponent = new UserNavigationComponent(this);
     this.inicioComponent = new InitialComponent();
+    this.clientesComponents = new CustomersComponent();
 
     vistaPrincipalTemplate.getPNavegacion()
       .add(navegacionUsuarioComponent.getNavegacionUsuarioTemplate());
@@ -55,12 +58,16 @@ public class MenuComponent {
           .add(articleComponent.getAmigosTemplate());
         break;
       case "Clientes":
+        if (this.clientesComponents == null) 
+        this.clientesComponents = new CustomersComponent();
+        vistaPrincipalTemplate.getPPrincipal()
+        .add(clientesComponents.getAmigosTemplate());
         break;
-      case "Productos":
-        if (this.productosComponent == null) 
-          this.productosComponent = new StoreComponent();
+      case "Tienda":
+        if (this.productStoreComponent == null) 
+          this.productStoreComponent = new StoreComponent();
         vistaPrincipalTemplate.crearContenidoProductos(
-          productosComponent.getProductosTemplate()
+          productStoreComponent.getProductosTemplate()
         );
         break;
       case "Configuraciones":

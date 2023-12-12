@@ -39,7 +39,7 @@ public class StoreTemplate extends JPanel {
     gbc = new GridBagConstraints();
 
     lTitulo = sObjGraficos.construirJLabel(
-      "Cursos en Linea",
+      "Tienda en Linea",
       0, 0, 0, 0,
       null, null,
       sRecursos.getFontTProducto(),

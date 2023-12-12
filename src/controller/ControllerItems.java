@@ -6,11 +6,11 @@ import java.io.FileReader;
 import java.util.ArrayList;
 import models.Products;
 
-public class ControllerArticles {
-  private ArrayList<Products> amigos;
+public class ControllerItems {
+  private ArrayList<Products> items;
 
-  public ControllerArticles() {
-    amigos = new ArrayList<Products>();
+  public ControllerItems() {
+    items = new ArrayList<Products>();
     cargarDatos();
   }
 
@@ -25,14 +25,14 @@ public class ControllerArticles {
       String linea;
       while ((linea = br.readLine()) != null) {
         String[] atributos = linea.split(",");
-        Products amigo = new Products();
-        amigo.setId(Integer.parseInt(atributos[0]));
-        amigo.setNombre(atributos[1]);
-        amigo.setEdad(atributos[2]);
-        amigo.setOficio(atributos[3]);
-        amigo.setTelefono(atributos[4]);
-        amigo.setEmail(atributos[5]);
-        amigos.add(amigo);
+        Products item = new Products();
+        item.setId(Integer.parseInt(atributos[0]));
+        item.setNombre(atributos[1]);
+        item.setEdad(atributos[2]);
+        item.setOficio(atributos[3]);
+        item.setTelefono(atributos[4]);
+        item.setEmail(atributos[5]);
+        items.add(item);
       }
       fr.close();
     } catch (Exception e) {
@@ -40,5 +40,5 @@ public class ControllerArticles {
     }
   }
 
-  public ArrayList<Products> getAmigos() { return amigos; }
+  public ArrayList<Products> getItem() { return items; }
 }

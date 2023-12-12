@@ -24,10 +24,10 @@ public class UserNavigationTemplate extends JPanel {
   //Declaración objetos gráficos
   private JPanel pSuperior, pInferior;
   private JLabel lNombreUsuario, lEslogan, lImagenUsuario, lIconoUsuario;
-  private JButton bInicio, bAmigos, bProductos, bConfiguracion, bCerrarSesion,bClientes;
+  private JButton bInicio, bProducts, bStore, bConfiguracion, bCerrarSesion,bClientes;
 
   //Declaración Objetos Decoradores
-  private ImageIcon iIconoUsuario, iInicio, iAmigos, iProductos, iClientes;
+  private ImageIcon iIconoUsuario, iInicio, iProducts, iStore, iClientes;
   private ImageIcon iConfiguracion, iCerrarSesion, iDimAux;
   private Border bVacio;
 
@@ -68,8 +68,8 @@ public class UserNavigationTemplate extends JPanel {
     );
     this.iInicio = new ImageIcon(getClass().getResource("/view/img/inicio.png"));
   this.iClientes = new ImageIcon(getClass().getResource("/view/img/clientes.png"));
-    this.iAmigos = new ImageIcon(getClass().getResource("/view/img/addP.png"));
-    this.iProductos = new ImageIcon(getClass().getResource("/view/img/tienda.png"));
+    this.iProducts = new ImageIcon(getClass().getResource("/view/img/addP.png"));
+    this.iStore = new ImageIcon(getClass().getResource("/view/img/tienda.png"));
     this.iConfiguracion = new ImageIcon(
       getClass().getResource("/view/img/configuracion.png")
     );
@@ -122,10 +122,10 @@ public class UserNavigationTemplate extends JPanel {
 
     // BOTÓN AMIGOS--------------------------------------------------------------------
     iDimAux = new ImageIcon(
-      iAmigos.getImage()
+      iProducts.getImage()
         .getScaledInstance(20, 20, Image.SCALE_AREA_AVERAGING)
     );
-    this.bAmigos = sObjGraficos.construirJButton(
+    this.bProducts = sObjGraficos.construirJButton(
       "      Articulos",
       30, 130, 200, 40,
       sRecursos.getCMano(),
@@ -137,17 +137,17 @@ public class UserNavigationTemplate extends JPanel {
       "l",
       false
     );
-    this.bAmigos.addActionListener(navegacionUsuarioComponent);
-    this.bAmigos.addMouseListener(navegacionUsuarioComponent);
-    this.pInferior.add(bAmigos);
+    this.bProducts.addActionListener(navegacionUsuarioComponent);
+    this.bProducts.addMouseListener(navegacionUsuarioComponent);
+    this.pInferior.add(bProducts);
 
-    // BOTÓN PRODUCTOS--------------------------------------------------------------------
+    // BOTÓN TIENDA--------------------------------------------------------------------
     iDimAux = new ImageIcon(
-      iProductos.getImage()
+      iStore.getImage()
         .getScaledInstance(20, 20, Image.SCALE_AREA_AVERAGING)
     );
-    this.bProductos = sObjGraficos.construirJButton(
-      "      Productos",
+    this.bStore = sObjGraficos.construirJButton(
+      "      Tienda",
       30, 180, 200, 40,
       sRecursos.getCMano(),
       iDimAux,
@@ -158,9 +158,9 @@ public class UserNavigationTemplate extends JPanel {
       "l",
       false
     );
-    this.bProductos.addActionListener(navegacionUsuarioComponent);
-    this.bProductos.addMouseListener(navegacionUsuarioComponent);
-    this.pInferior.add(bProductos);
+    this.bStore.addActionListener(navegacionUsuarioComponent);
+    this.bStore.addMouseListener(navegacionUsuarioComponent);
+    this.pInferior.add(bStore);
 
     // BOTÓN CONFIGURACIÓN--------------------------------------------------------------------
     iDimAux = new ImageIcon(
