@@ -1,2 +1,2 @@
-1,Java,Oracle,null,$67,karol101@gmail.com
-2,CssAvanzado,-,null,$82,SandraG@hotmail.com
+0,Java,Oracle,null,$67,karol101@gmail.com
+1,CssAvanzado,-,null,$82,SandraG@hotmail.com

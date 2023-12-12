@@ -209,11 +209,11 @@ public class UserNavigationTemplate extends JPanel {
     // LABEL ICONO USUARIO--------------------------------------------------------------------
     iDimAux = new ImageIcon(
       iIconoUsuario.getImage()
-        .getScaledInstance(40, 40, Image.SCALE_AREA_AVERAGING)
+        .getScaledInstance(30, 30, Image.SCALE_AREA_AVERAGING)
     );
     this.lIconoUsuario = sObjGraficos.construirJLabel(
       null,
-      10, 20, 40, 40,
+      10, 20, 30, 30,
       null,
       iDimAux,
       null, null, null, null,
@@ -224,7 +224,7 @@ public class UserNavigationTemplate extends JPanel {
     // LABEL NOMBRE USUARIO--------------------------------------------------------------------
     this.lNombreUsuario = sObjGraficos.construirJLabel(
       navegacionUsuarioComponent.getUsuario().getNombreUsuario(),
-      (this.pSuperior.getWidth() - 200) / 2, 20, 200, 40,
+      (this.pSuperior.getWidth() - 200) / 2, 20, 200, 30,
       null, null,
       sRecursos.getFontTitulo(),
       null,
