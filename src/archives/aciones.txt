@@ -1,0 +1,6 @@
+Clases,Clases a la comunidad que complementan el pensum común.,src/view/img/acciones/conocimiento.png
+Clases Virtuales,Cursos virtuales como medio de enseñanza.,src/view/img/acciones/video.png
+Generación de ideas,Desarrollo de ideas con tecnologías actuales.,src/view/img/acciones/idea.png
+Notificaciones,Notificación el estado de tus cursos y actividades.,src/view/img/acciones/notificaciones.png
+Estadísticas,Gestión de participación en nuestros cursos.,src/view/img/acciones/analitica.png
+Dirección,Damos direcciónamiento a nuestros estudiantes.,src/view/img/acciones/flechas.png
