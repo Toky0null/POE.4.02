@@ -8,28 +8,28 @@ import models.Customers;
 
 public class ArticleCustomersService {
   private static ArticleCustomersService servicio;
-  private ControllerCustomers cAmigos;
-  private ArrayList<Customers> amigos;
+  private ControllerCustomers cCliente;
+  private ArrayList<Customers> clientes;
 
   public ArticleCustomersService() {
-   cAmigos = new ControllerCustomers();
-   amigos = cAmigos.getAmigos();
+   cCliente = new ControllerCustomers();
+   clientes = cCliente.getAmigos();
   }
 
-  public Customers devolverAmigo(int posicion) {
+  public Customers returnCustomers(int posicion) {
     try {
-      return amigos.get(posicion);
+      return clientes.get(posicion);
     } catch (Exception e) {
       return null;
     }
   }
 
-  public void agregarAmigo(Customers amigo) {
-    this.amigos.add(amigo);
+  public void addCustomers(Customers cliente) {
+    this.clientes.add(cliente);
   }
 
-  public int devolverCantidadAmigos() {
-    return amigos.size();
+  public int returnAmountC() {
+    return clientes.size();
   }
 
   public static ArticleCustomersService getService() {

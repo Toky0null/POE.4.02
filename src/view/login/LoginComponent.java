@@ -7,12 +7,14 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.ImageIcon;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.Timer;
+import models.User;
 
 public class LoginComponent extends MouseAdapter implements ActionListener {
   private LoginTemplate loginTemplate;
@@ -56,8 +58,28 @@ public class LoginComponent extends MouseAdapter implements ActionListener {
   public void mouseClicked(MouseEvent e) {
     if (e.getSource() == loginTemplate.getBEntrar()) this.enviarDatosUsuario();
     if (e.getSource() == loginTemplate.getBCerrar()) System.exit(0);
-    if (e.getSource() == loginTemplate.getBRegistrarse()) 
-      JOptionPane.showMessageDialog(null, "Boton Registro", "Advertencia", 1);
+    if (e.getSource() == loginTemplate.getBRegistrarse()){
+        String nombreUsuario = loginTemplate.getTNombreUsuario().getText();
+        String claveUsuario = new String(loginTemplate.getTClaveUsuario().getPassword());
+        String tipoUsuario = ((String) loginTemplate.getCbTipoUsuario().getSelectedItem());
+
+    if (!nombreUsuario.equals(placeholders[0]) && !claveUsuario.equals(placeholders[1])) {
+            // Crea un nuevo usuario con los datos recogidos
+            User nuevoUsuario = new User();
+            nuevoUsuario.setNombreUsuario(nombreUsuario);
+            nuevoUsuario.setClaveUsuario(claveUsuario);
+            nuevoUsuario.setTipoUsuario(tipoUsuario);
+            nuevoUsuario.setImagenUsuario(new ImageIcon(getClass().getResource("/view/img/perfiles/perfiles.png")));
+            // Llama al método para agregar el nuevo usuario
+            sUsuario.addUser(nuevoUsuario);
+            JOptionPane.showMessageDialog(null, "Usuario Registrado", "Felicidades!!", 1);
+        } else {
+            // Muestra un mensaje de error si los campos tienen los placeholders
+            JOptionPane.showMessageDialog(null, "Los campos no pueden contener valores predeterminados.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    
+      
+    }
     if (e.getSource() instanceof JTextField) {
       text = ((JTextField) e.getSource());
       label = loginTemplate.getLabels(text);

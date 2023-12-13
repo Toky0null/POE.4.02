@@ -30,4 +30,8 @@ public class UserService {
     if (servicio == null) servicio = new UserService();
     return servicio;
   }
+  
+  public void addUser(User nuevoUser){
+     cUsuario.addUser(nuevoUser);
+  }
 }

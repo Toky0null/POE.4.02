@@ -1,5 +1,8 @@
-UD,123456,Administrador,src/view/img/perfiles/perfiles.png
+Sebastian,123456,Administrador,src/view/img/perfiles/perfiles.png
 DP,123,Cajero,src/view/img/perfiles/perfiles.png
 SandraMCC,101232,Cajero,src/view/img/perfiles/perfiles.png
 CarlaFG,456123,Cliente,src/view/img/perfiles/perfiles.png
 Daniela987,111222,Cliente,src/view/img/perfiles/perfiles.png
+pedro,3tr0p0s,Cajero,src/view/img/perfiles/perfiles.png
+karol,yumi,Cliente,src/view/img/perfiles/perfiles.png
+neko,2,Administrador,src/view/img/perfiles/perfiles.png

@@ -21,29 +21,29 @@ import javax.swing.table.TableRowSorter;
 import models.Customers;
 
 public class CustomersComponent extends MouseAdapter implements ActionListener, FocusListener {
-  private CustomersTemplate amigosTemplate;
-  private ArticleCustomersService sAmigos;
+  private CustomersTemplate clienteTemplate;
+  private ArticleCustomersService sClientes;
   private String[] placeholders = {
     "Nombre", "Edad", "Oficio", "Telefono", "Email", "Filtrar...",
   };
-  private Customers amigo;
+  private Customers cliente;
 
   public CustomersComponent() {
-    sAmigos = ArticleCustomersService.getService();
-    amigosTemplate = new CustomersTemplate(this);
+    sClientes = ArticleCustomersService.getService();
+    clienteTemplate = new CustomersTemplate(this);
   }
 
   @Override
   public void actionPerformed(ActionEvent e) {
-    if (e.getSource() == amigosTemplate.getBMostrar()) mostrarRegistrosTabla();
-    if (e.getSource() == amigosTemplate.getBInsertar()) insertarRegistroTabla();
-    if (e.getSource() == amigosTemplate.getBModificar()) modificarRegistroTabla();
-    if (e.getSource() == amigosTemplate.getBEliminar()) eliminarRegistroTabla();
-    if (e.getSource() == amigosTemplate.getBFiltrar()) filtrarRegistrosTabla();
+    if (e.getSource() == clienteTemplate.getBMostrar()) mostrarRegistrosTabla();
+    if (e.getSource() == clienteTemplate.getBInsertar()) insertarRegistroTabla();
+    if (e.getSource() == clienteTemplate.getBModificar()) modificarRegistroTabla();
+    if (e.getSource() == clienteTemplate.getBEliminar()) eliminarRegistroTabla();
+    if (e.getSource() == clienteTemplate.getBFiltrar()) filtrarRegistrosTabla();
   }
 
   public CustomersTemplate getAmigosTemplate() {
-    return amigosTemplate;
+    return clienteTemplate;
   }
 
   @Override
@@ -69,14 +69,14 @@ public class CustomersComponent extends MouseAdapter implements ActionListener, 
   @Override
   public void mouseClicked(MouseEvent e) {
     if (e.getSource() instanceof JTable) {
-      int fila = amigosTemplate.getTabla().getSelectedRow();
-      amigo = sAmigos.devolverAmigo(fila);
-      amigosTemplate.getLIdValor().setText(amigo.getId() + "");
-      amigosTemplate.getTNombre().setText(amigo.getNombre());
-      amigosTemplate.getTEdad().setText(amigo.getEdad());
-      amigosTemplate.getTOficio().setText(amigo.getOficio());
-      amigosTemplate.getTTelefono().setText(amigo.getTelefono());
-      amigosTemplate.getTEmail().setText(amigo.getEmail());
+      int fila = clienteTemplate.getTabla().getSelectedRow();
+      cliente = sClientes.returnCustomers(fila);
+      clienteTemplate.getLIdValor().setText(cliente.getId() + "");
+      clienteTemplate.getTNombre().setText(cliente.getNombre());
+      clienteTemplate.getTEdad().setText(cliente.getEdad());
+      clienteTemplate.getTOficio().setText(cliente.getOficio());
+      clienteTemplate.getTTelefono().setText(cliente.getTelefono());
+      clienteTemplate.getTEmail().setText(cliente.getEmail());
     }
   }
 
@@ -97,52 +97,52 @@ public class CustomersComponent extends MouseAdapter implements ActionListener, 
   }
 
   public void restaurarValores() {
-    amigosTemplate.getLIdValor().setText(sAmigos.devolverCantidadAmigos() + "");
-    amigosTemplate.getTNombre().setText(placeholders[0]);
-    amigosTemplate.getTEdad().setText(placeholders[1]);
-    amigosTemplate.getTOficio().setText(placeholders[2]);
-    amigosTemplate.getTTelefono().setText(placeholders[3]);
-    amigosTemplate.getTEmail().setText(placeholders[4]);
-    amigosTemplate.getTabla().setSelectionMode(0);
+    clienteTemplate.getLIdValor().setText(sClientes.returnAmountC() + "");
+    clienteTemplate.getTNombre().setText(placeholders[0]);
+    clienteTemplate.getTEdad().setText(placeholders[1]);
+    clienteTemplate.getTOficio().setText(placeholders[2]);
+    clienteTemplate.getTTelefono().setText(placeholders[3]);
+    clienteTemplate.getTEmail().setText(placeholders[4]);
+    clienteTemplate.getTabla().setSelectionMode(0);
   }
 
   public void mostrarRegistrosTabla() {
-    for (int i = 0; i < sAmigos.devolverCantidadAmigos(); i++) {
-      amigo = sAmigos.devolverAmigo(i);
-      this.agregarRegistro(amigo);
+    for (int i = 0; i < sClientes.returnAmountC(); i++) {
+      cliente = sClientes.returnCustomers(i);
+      this.agregarRegistro(cliente);
     }
-    amigosTemplate.getLIdValor().setText(sAmigos.devolverCantidadAmigos() + "");
-    amigosTemplate.getBMostrar().setEnabled(false);
+    clienteTemplate.getLIdValor().setText(sClientes.returnAmountC() + "");
+    clienteTemplate.getBMostrar().setEnabled(false);
   }
 
   public void insertarRegistroTabla() {
-    amigo = new Customers();
-    amigo.setId(sAmigos.devolverCantidadAmigos());
-    amigo.setNombre(amigosTemplate.getTNombre().getText());
-    amigo.setEdad(amigosTemplate.getTEdad().getText());
-    amigo.setOficio(amigosTemplate.getTOficio().getText());
-    amigo.setTelefono(amigosTemplate.getTTelefono().getText());
-    amigo.setEmail(amigosTemplate.getTEmail().getText());
-    this.agregarRegistro(amigo);
-    sAmigos.agregarAmigo(amigo);
+    cliente = new Customers();
+    cliente.setId(sClientes.returnAmountC());
+    cliente.setNombre(clienteTemplate.getTNombre().getText());
+    cliente.setEdad(clienteTemplate.getTEdad().getText());
+    cliente.setOficio(clienteTemplate.getTOficio().getText());
+    cliente.setTelefono(clienteTemplate.getTTelefono().getText());
+    cliente.setEmail(clienteTemplate.getTEmail().getText());
+    this.agregarRegistro(cliente);
+    sClientes.addCustomers(cliente);
     restaurarValores();
   }
 
   public void modificarRegistroTabla() {
-    int fSeleccionada = amigosTemplate.getTabla().getSelectedRow();
+    int fSeleccionada = clienteTemplate.getTabla().getSelectedRow();
     if (fSeleccionada != -1) {
-      amigosTemplate.getModelo()
-        .setValueAt(amigosTemplate.getTNombre().getText(), fSeleccionada, 1);
-      amigosTemplate.getModelo()
-        .setValueAt(amigosTemplate.getTTelefono().getText(), fSeleccionada, 2);
-      amigosTemplate.getModelo()
-        .setValueAt(amigosTemplate.getTEmail().getText(), fSeleccionada, 3);
-      amigo = sAmigos.devolverAmigo(fSeleccionada);
-      amigo.setNombre(amigosTemplate.getTNombre().getText());
-      amigo.setEdad(amigosTemplate.getTEdad().getText());
-      amigo.setOficio(amigosTemplate.getTOficio().getText());
-      amigo.setTelefono(amigosTemplate.getTTelefono().getText());
-      amigo.setEmail(amigosTemplate.getTEmail().getText());
+      clienteTemplate.getModelo()
+        .setValueAt(clienteTemplate.getTNombre().getText(), fSeleccionada, 1);
+      clienteTemplate.getModelo()
+        .setValueAt(clienteTemplate.getTTelefono().getText(), fSeleccionada, 2);
+      clienteTemplate.getModelo()
+        .setValueAt(clienteTemplate.getTEmail().getText(), fSeleccionada, 3);
+      cliente = sClientes.returnCustomers(fSeleccionada);
+      cliente.setNombre(clienteTemplate.getTNombre().getText());
+      cliente.setEdad(clienteTemplate.getTEdad().getText());
+      cliente.setOficio(clienteTemplate.getTOficio().getText());
+      cliente.setTelefono(clienteTemplate.getTTelefono().getText());
+      cliente.setEmail(clienteTemplate.getTEmail().getText());
       restaurarValores();
     } else JOptionPane.showMessageDialog(
       null,
@@ -153,9 +153,9 @@ public class CustomersComponent extends MouseAdapter implements ActionListener, 
   }
 
   public void eliminarRegistroTabla() {
-    int fSeleccionada = amigosTemplate.getTabla().getSelectedRow();
+    int fSeleccionada = clienteTemplate.getTabla().getSelectedRow();
     if (fSeleccionada != -1) 
-      amigosTemplate.getModelo().removeRow(fSeleccionada); 
+      clienteTemplate.getModelo().removeRow(fSeleccionada); 
     else 
       JOptionPane.showMessageDialog(
         null,
@@ -167,23 +167,21 @@ public class CustomersComponent extends MouseAdapter implements ActionListener, 
 
   public void filtrarRegistrosTabla() {
     TableRowSorter<DefaultTableModel> trs = new TableRowSorter<>(
-      amigosTemplate.getModelo()
+      clienteTemplate.getModelo()
     );
-    amigosTemplate.getTabla().setRowSorter(trs);
-    trs.setRowFilter(
-      RowFilter.regexFilter(amigosTemplate.getTConsulta().getText())
+    clienteTemplate.getTabla().setRowSorter(trs);
+    trs.setRowFilter(RowFilter.regexFilter(clienteTemplate.getTConsulta().getText())
     );
   }
 
-  public void agregarRegistro(Customers amigo) {
-    amigosTemplate
+  public void agregarRegistro(Customers cliente) {
+    clienteTemplate
       .getModelo()
-      .addRow(
-        new Object[] {
-          amigo.getId(),
-          amigo.getNombre(),
-          amigo.getTelefono(),
-          amigo.getEmail(),
+      .addRow(new Object[] {
+          cliente.getId(),
+          cliente.getNombre(),
+          cliente.getTelefono(),
+          cliente.getEmail(),
         }
       );
   }
