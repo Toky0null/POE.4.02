@@ -16,7 +16,7 @@ public class UserService {
     String nombreUsuario, String claveUsuario, String tipoUsuario
   ) {
     if (cUsuario.verificarUsuario(nombreUsuario, claveUsuario, tipoUsuario)) {
-      this.usuarioConectado = cUsuario.devolverUsuario(nombreUsuario);
+      this.usuarioConectado = cUsuario.returnUser(nombreUsuario);
       return true;
     }
     return false;

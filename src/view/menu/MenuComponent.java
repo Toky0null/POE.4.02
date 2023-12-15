@@ -61,7 +61,7 @@ public class MenuComponent {
         if (this.clientesComponents == null) 
         this.clientesComponents = new CustomersComponent();
         vistaPrincipalTemplate.getPPrincipal()
-        .add(clientesComponents.getAmigosTemplate());
+        .add(clientesComponents.getCustomerTemplate());
         break;
       case "Tienda":
         if (this.productStoreComponent == null) 

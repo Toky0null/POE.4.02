@@ -58,7 +58,7 @@ public class ControllerUser {
       return false;
     }
 
-    public User devolverUsuario(String nombreUsuario) {
+    public User returnUser(String nombreUsuario) {
       for (User usuario : usuarios) {
         if (usuario.getNombreUsuario().equals(nombreUsuario)) 
           return usuario;

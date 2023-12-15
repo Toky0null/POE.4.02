@@ -42,7 +42,7 @@ public class CustomersComponent extends MouseAdapter implements ActionListener, 
     if (e.getSource() == clienteTemplate.getBFiltrar()) filtrarRegistrosTabla();
   }
 
-  public CustomersTemplate getAmigosTemplate() {
+  public CustomersTemplate getCustomerTemplate() {
     return clienteTemplate;
   }
 
@@ -117,7 +117,7 @@ public class CustomersComponent extends MouseAdapter implements ActionListener, 
 
   public void insertarRegistroTabla() {
     cliente = new Customers();
-    cliente.setId(sClientes.returnAmountC());
+    cliente.setId(sClientes.getLastCustomerId()+1);
     cliente.setNombre(clienteTemplate.getTNombre().getText());
     cliente.setEdad(clienteTemplate.getTEdad().getText());
     cliente.setOficio(clienteTemplate.getTOficio().getText());
@@ -126,6 +126,7 @@ public class CustomersComponent extends MouseAdapter implements ActionListener, 
     this.agregarRegistro(cliente);
     sClientes.addCustomers(cliente);
     restaurarValores();
+    
   }
 
   public void modificarRegistroTabla() {
@@ -143,6 +144,7 @@ public class CustomersComponent extends MouseAdapter implements ActionListener, 
       cliente.setOficio(clienteTemplate.getTOficio().getText());
       cliente.setTelefono(clienteTemplate.getTTelefono().getText());
       cliente.setEmail(clienteTemplate.getTEmail().getText());
+      sClientes.updateCustomer(cliente);
       restaurarValores();
     } else JOptionPane.showMessageDialog(
       null,
@@ -154,9 +156,12 @@ public class CustomersComponent extends MouseAdapter implements ActionListener, 
 
   public void eliminarRegistroTabla() {
     int fSeleccionada = clienteTemplate.getTabla().getSelectedRow();
-    if (fSeleccionada != -1) 
+    if (fSeleccionada != -1) {
+      int idCliente = (Integer) clienteTemplate.getTabla().getValueAt(fSeleccionada, 0);
+      sClientes.removeCustomer(idCliente);
       clienteTemplate.getModelo().removeRow(fSeleccionada); 
-    else 
+      System.out.println("ID del cliente seleccionado: " + idCliente);
+    }else 
       JOptionPane.showMessageDialog(
         null,
         "seleccione una fila",
@@ -175,7 +180,7 @@ public class CustomersComponent extends MouseAdapter implements ActionListener, 
   }
 
   public void agregarRegistro(Customers cliente) {
-    clienteTemplate
+      clienteTemplate
       .getModelo()
       .addRow(new Object[] {
           cliente.getId(),
