@@ -3,22 +3,23 @@ package logicService;
 import java.util.ArrayList;
 
 import controller.ControllerItems;
+import models.Customers;
 
 import models.Products;
 
 public class ArticleStService {
   private static ArticleStService servicio;
   private ControllerItems cProducts;
-  private ArrayList<Products> product;
+  private ArrayList<Products> items;
 
   public ArticleStService() {
    cProducts = new ControllerItems();
-   product = cProducts.getItem();
+   items = cProducts.getItem();
   }
 
-  public Products getItem(int posicion) {
+  public Products getItem(int index) {
     try {
-      return product.get(posicion);
+      return items.get(index);
     } catch (Exception e) {
       return null;
     }
@@ -29,8 +30,19 @@ public class ArticleStService {
   }
 
   public int returnAmountItems() {
-    return product.size();
+    return items.size();
   }
+  
+  public int getLastCustomerId() {
+        if (!items.isEmpty()) {
+            return items.get(items.size() - 1).getId();
+        } else {
+            // Puedes elegir lanzar una excepción, retornar -1, o manejar esta situación de alguna otra manera
+            System.out.println("La lista de clientes está vacía.");
+            return -1;
+        }
+    }
+  
 
   public static ArticleStService getService() {
     if (servicio == null) servicio = new ArticleStService();
@@ -42,5 +54,7 @@ public class ArticleStService {
   cProducts.removeItem(id);
   }
   
-//  continuar con los metodos del CRUD
+  public void updateItems (Products itemUpdate){
+   cProducts.updateProducts(itemUpdate);
+  }
 }

@@ -46,7 +46,7 @@ public class ArticleCustomersService {
   cCliente.updateCutomer(clienteActualizado);
   }
   
-  public int getLastCustomerId() {
+    public int getLastCustomerId() {
         if (!clientes.isEmpty()) {
             return clientes.get(clientes.size() - 1).getId();
         } else {

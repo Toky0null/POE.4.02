@@ -102,4 +102,9 @@ public class MenuComponent {
   public void minimizar() {
     this.vistaPrincipalTemplate.setExtendedState(Frame.ICONIFIED);
   }
+  
+  public void hidenB (String type){
+   this.navegacionUsuarioComponent.hideBotton(type);
+  
+  }
 }

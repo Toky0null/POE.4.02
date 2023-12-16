@@ -266,6 +266,29 @@ public class UserNavigationTemplate extends JPanel {
     );
     this.pSuperior.add(lEslogan);
   }
+  
+  public void hideHomeButton() {
+        this.bInicio.setVisible(false);
+    }
 
+    public void hideButtonP() {
+        this.bProducts.setVisible(false);
+    }
+
+    public void hideButtonStore() {
+        this.bStore.setVisible(false);
+    }
+
+    public void hideSettingsButton() {
+        this.bConfiguracion.setVisible(false);
+    }
+
+    public void hideButtonCloseS() {
+        this.bCerrarSesion.setVisible(false);
+    }
+
+    public void hideButtonClients() {
+        this.bClientes.setVisible(false);
+    }
   public JPanel getPSuperior() { return pSuperior; }
 }

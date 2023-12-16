@@ -6,7 +6,7 @@
 6,TypeScript,-,null,$78,-
 7,Premier Pro,-,null,$54,-
 8,After Effects,-,null,$88,-
-9,Angular Js,-,null,$99,-
+9,Angular Js,-,null,$99,juan.gg
 10,Vue Js,-,null,$12,-
 11,Google Cloud,Google,null,$58.6,-
 12,GraphQL,-,null,$22.5,-

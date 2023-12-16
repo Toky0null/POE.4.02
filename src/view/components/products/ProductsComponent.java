@@ -117,7 +117,7 @@ public class ProductsComponent extends MouseAdapter implements ActionListener, F
 
   public void insertarRegistroTabla() {
     products = new Products();
-    products.setId(sProducts.returnAmountItems());
+    products.setId(sProducts.getLastCustomerId()+1);
     products.setName(productsTemplate.getTNameP().getText());
     products.setSupplier(productsTemplate.getTSupplier().getText());
     products.setOnll(productsTemplate.getTOnll().getText());
@@ -143,6 +143,7 @@ public class ProductsComponent extends MouseAdapter implements ActionListener, F
       products.setOnll(productsTemplate.getTOnll().getText());
       products.setTelefono(productsTemplate.getTPrice().getText());
       products.setEmail(productsTemplate.getTEmail().getText());
+      sProducts.updateItems(products);
       restaurarValores();
     } else JOptionPane.showMessageDialog(
       null,
@@ -154,8 +155,12 @@ public class ProductsComponent extends MouseAdapter implements ActionListener, F
 
   public void eliminarRegistroTabla() {
     int fSeleccionada = productsTemplate.getTabla().getSelectedRow();
-    if (fSeleccionada != -1) 
+    if (fSeleccionada != -1){ 
+      int idItem = (Integer) productsTemplate.getTabla().getValueAt(fSeleccionada, 0);  
+      sProducts.removeItem(idItem);
       productsTemplate.getModelo().removeRow(fSeleccionada); 
+        System.out.println("ID del cliente seleccionado: " + idItem);
+    }  
     else 
       JOptionPane.showMessageDialog(
         null,

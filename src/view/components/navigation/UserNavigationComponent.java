@@ -59,4 +59,17 @@ public class UserNavigationComponent extends MouseAdapter implements ActionListe
   public UserNavigationTemplate getNavegacionUsuarioTemplate() {
     return this.navegacionUsuarioTemplate;
   }
+  
+  public void hideBotton(String botton){
+      switch (botton){
+          case "Cliente":
+              this.navegacionUsuarioTemplate.hideButtonClients();
+              this.navegacionUsuarioTemplate.hideButtonP();
+            break;
+          case "Cajero":
+              this.navegacionUsuarioTemplate.hideButtonP();         
+              break;
+    }
+  
+  }
 }

@@ -12,10 +12,10 @@ public class UserService {
     cUsuario = new ControllerUser();
   }
 
-  public boolean verificarDatosUsuario(
+  public boolean checkUserS(
     String nombreUsuario, String claveUsuario, String tipoUsuario
   ) {
-    if (cUsuario.verificarUsuario(nombreUsuario, claveUsuario, tipoUsuario)) {
+    if (cUsuario.checkUser(nombreUsuario, claveUsuario, tipoUsuario)) {
       this.usuarioConectado = cUsuario.returnUser(nombreUsuario);
       return true;
     }

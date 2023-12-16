@@ -46,7 +46,7 @@ public class ControllerUser {
       }
     }
 
-    public boolean verificarUsuario(
+    public boolean checkUser(
       String nombreUsuario, String claveUsuario, String tipoUsuario
     ) {
       for (User usuario : usuarios) {
