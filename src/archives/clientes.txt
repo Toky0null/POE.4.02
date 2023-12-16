@@ -2,6 +2,6 @@
 1,Sandra Gonzales,34 años,Vendedora,310-340-3882,SandraG@hotmail.com
 3,Cindy Daza,38 años,Maestra,687-55-45,-
 4,John Florez,25 años,Policía,320-836-48-24,johnF32@hotmail.com
-5,Nicolas Moreno,23 años,Estudiante,-,nicolaswwe@hotmail.com
+5,Nicolas Moreno,23 años,Estudiante,315-656-31-44,nicolaswwe@hotmail.com
 7,Mario Casas,17 años,Estudiante,322-980-55-41,marioc80@gmail.com
-8,Jairo Ruiz,29 años,Artista,3156563144,-
+8,Jairo Ruiz,29 años,Artista,-,-

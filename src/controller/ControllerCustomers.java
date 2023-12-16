@@ -48,13 +48,13 @@ public class ControllerCustomers {
 
   public ArrayList<Customers> getCustomers() { return clientes; }
   
-  public Customers returnCustomer (int id){
-  for (Customers cliente : clientes) {
-        if (cliente.getId() == id)
-          return cliente;
-      }
+    public Customers returnCustomer (int id){
+        for (Customers cliente : clientes) {
+            if (cliente.getId() == id)
+            return cliente;
+        }
       return null;
-  }
+    }
   
   
     public void updateCutomer (Customers clienteActualizado) {
@@ -65,7 +65,7 @@ public class ControllerCustomers {
             }
         }
         writeUserFile();
-   }
+    }
 
     private void writeUserFile() {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("src/archives/clientes.txt"))) {
@@ -94,6 +94,5 @@ public class ControllerCustomers {
             }
         }
     }
-    
     
 }

@@ -65,7 +65,7 @@ public class ControllerUser {
       }
       return null;
     }
-  
+    
     public void addUser(User nuevoUsuario) {
         usuarios.add(nuevoUsuario);
         writeUserFile();

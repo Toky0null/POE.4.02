@@ -31,7 +31,7 @@ public class ProductTemplate extends JPanel {
   private JTextField tConsulta;
   private JLabel lTitulo, lInstrucciones, lEslogan;
   private JLabel lId, lIdValor, lNombreP, lSupplier, lOnll, lPrice, lEmail;
-  private JTextField tNombreP, tSupplier, tOnll, tPrice, tEmail;
+  private JTextField tNameP, tSupplier, tOnll, tPrice, tEmail;
 
   // Declaración objetos decoradores
   private Color colorGris;
@@ -42,7 +42,7 @@ public class ProductTemplate extends JPanel {
   private JTable tabla;
   private JTableHeader header;
   private DefaultTableModel modelo;
-  private String[] cabecera = { "id", "Nombre","Precio","Proveedor" };
+  private String[] cabecera = { "id", "Nombre","Precio","Email Proveedor" };
 
   public ProductTemplate(ProductsComponent productsComponent) {
     this.ProductsComponent = productsComponent;
@@ -309,7 +309,7 @@ public class ProductTemplate extends JPanel {
     pDatos.add(lNombreP);
 
     // TEXTFIELD PRODUCTO ----------------------------------------------------------------
-    tNombreP = sObjGraficos.construirJTextField(
+    tNameP = sObjGraficos.construirJTextField(
       "Item",
       30, 215, 180, 30,
       sRecursos.getFontLigera(),
@@ -319,8 +319,8 @@ public class ProductTemplate extends JPanel {
       null,
       "c"
     );
-    tNombreP.addFocusListener(ProductsComponent);
-    pDatos.add(tNombreP);
+    tNameP.addFocusListener(ProductsComponent);
+    pDatos.add(tNameP);
 
     // LABEL PROVEEDOR ----------------------------------------------------------------
     lSupplier = sObjGraficos.construirJLabel(
@@ -437,21 +437,21 @@ public class ProductTemplate extends JPanel {
 
   public JButton getBMostrar() { return bMostrar; }
 
-  public JButton getBInsertar() { return bInsertar; }
+  public JButton getBInsert() { return bInsertar; }
 
-  public JButton getBModificar() { return bModificar; }
+  public JButton getBChange() { return bModificar; }
 
-  public JButton getBEliminar() { return bEliminar; }
+  public JButton getRemove() { return bEliminar; }
 
   public JButton getBFiltrar() { return bFiltrar; }
 
   public JLabel getLIdValor() { return lIdValor; }
 
-  public JTextField getTNombreP() { return tNombreP; }
+  public JTextField getTNameP() { return tNameP; }
 
   public JTextField getTSupplier() { return tSupplier; }
 
-  public JTextField getTOficio() { return tOnll; }
+  public JTextField getTOnll() { return tOnll; }
 
   public JTextField getTPrice() { return tPrice; }
 

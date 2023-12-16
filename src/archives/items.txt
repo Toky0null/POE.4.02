@@ -1,2 +1,12 @@
-0,Java,Oracle,null,$67,karol101@gmail.com
-1,CssAvanzado,-,null,$82,SandraG@hotmail.com
+1,Java,Oracle,null,$67,karol101@gmail.com
+2,CssAvanzado,-,null,$82,SandraG@hotmail.com
+3,JavaScript,-,null,$45,-
+4,Kotlin,-,null,$68,-
+5,React Js,-,null,$26,-
+6,TypeScript,-,null,$78,-
+7,Premier Pro,-,null,$54,-
+8,After Effects,-,null,$88,-
+9,Angular Js,-,null,$99,-
+10,Vue Js,-,null,$12,-
+11,Google Cloud,Google,null,$58.6,-
+12,GraphQL,-,null,$22.5,-

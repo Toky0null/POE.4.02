@@ -16,7 +16,7 @@ public class ArticleStService {
    product = cProducts.getItem();
   }
 
-  public Products devolverItem(int posicion) {
+  public Products getItem(int posicion) {
     try {
       return product.get(posicion);
     } catch (Exception e) {
@@ -24,11 +24,11 @@ public class ArticleStService {
     }
   }
 
-  public void agregarItem(Products products) {
-    this.product.add(products);
+  public void addItemA(Products products) {
+    cProducts.addItem(products);
   }
 
-  public int devolverCantidadItems() {
+  public int returnAmountItems() {
     return product.size();
   }
 
@@ -36,4 +36,11 @@ public class ArticleStService {
     if (servicio == null) servicio = new ArticleStService();
     return servicio;
   }
+  
+  
+  public void removeItem (int id){  
+  cProducts.removeItem(id);
+  }
+  
+//  continuar con los metodos del CRUD
 }

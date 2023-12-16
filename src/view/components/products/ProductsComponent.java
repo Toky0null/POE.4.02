@@ -36,9 +36,9 @@ public class ProductsComponent extends MouseAdapter implements ActionListener, F
   @Override
   public void actionPerformed(ActionEvent e) {
     if (e.getSource() == productsTemplate.getBMostrar()) mostrarRegistrosTabla();
-    if (e.getSource() == productsTemplate.getBInsertar()) insertarRegistroTabla();
-    if (e.getSource() == productsTemplate.getBModificar()) modificarRegistroTabla();
-    if (e.getSource() == productsTemplate.getBEliminar()) eliminarRegistroTabla();
+    if (e.getSource() == productsTemplate.getBInsert()) insertarRegistroTabla();
+    if (e.getSource() == productsTemplate.getBChange()) modificarRegistroTabla();
+    if (e.getSource() == productsTemplate.getRemove()) eliminarRegistroTabla();
     if (e.getSource() == productsTemplate.getBFiltrar()) filtrarRegistrosTabla();
   }
 
@@ -70,11 +70,11 @@ public class ProductsComponent extends MouseAdapter implements ActionListener, F
   public void mouseClicked(MouseEvent e) {
     if (e.getSource() instanceof JTable) {
       int fila = productsTemplate.getTabla().getSelectedRow();
-      products = sProducts.devolverItem(fila);
+      products = sProducts.getItem(fila);
       productsTemplate.getLIdValor().setText(products.getId() + "");
-      productsTemplate.getTNombreP().setText(products.getNombre());
-      productsTemplate.getTSupplier().setText(products.getEdad());
-      productsTemplate.getTOficio().setText(products.getOnll());
+      productsTemplate.getTNameP().setText(products.getName());
+      productsTemplate.getTSupplier().setText(products.getSupplier());
+      productsTemplate.getTOnll().setText(products.getOnll());
       productsTemplate.getTPrice().setText(products.getPrice());
       productsTemplate.getTEmail().setText(products.getEmail());
     }
@@ -97,34 +97,34 @@ public class ProductsComponent extends MouseAdapter implements ActionListener, F
   }
 
   public void restaurarValores() {
-    productsTemplate.getLIdValor().setText(sProducts.devolverCantidadItems() + "");
-    productsTemplate.getTNombreP().setText(placeholders[0]);
+    productsTemplate.getLIdValor().setText(sProducts.returnAmountItems() + "");
+    productsTemplate.getTNameP().setText(placeholders[0]);
     productsTemplate.getTSupplier().setText(placeholders[1]);
-    productsTemplate.getTOficio().setText(placeholders[2]);
+    productsTemplate.getTOnll().setText(placeholders[2]);
     productsTemplate.getTPrice().setText(placeholders[3]);
     productsTemplate.getTEmail().setText(placeholders[4]);
     productsTemplate.getTabla().setSelectionMode(0);
   }
 
   public void mostrarRegistrosTabla() {
-    for (int i = 0; i < sProducts.devolverCantidadItems(); i++) {
-      products = sProducts.devolverItem(i);
+    for (int i = 0; i < sProducts.returnAmountItems(); i++) {
+      products = sProducts.getItem(i);
       this.agregarRegistro(products);
     }
-    productsTemplate.getLIdValor().setText(sProducts.devolverCantidadItems() + "");
+    productsTemplate.getLIdValor().setText(sProducts.returnAmountItems() + "");
     productsTemplate.getBMostrar().setEnabled(false);
   }
 
   public void insertarRegistroTabla() {
     products = new Products();
-    products.setId(sProducts.devolverCantidadItems());
-    products.setNombre(productsTemplate.getTNombreP().getText());
-    products.setEdad(productsTemplate.getTSupplier().getText());
-    products.setOficio(productsTemplate.getTOficio().getText());
+    products.setId(sProducts.returnAmountItems());
+    products.setName(productsTemplate.getTNameP().getText());
+    products.setSupplier(productsTemplate.getTSupplier().getText());
+    products.setOnll(productsTemplate.getTOnll().getText());
     products.setTelefono(productsTemplate.getTPrice().getText());
     products.setEmail(productsTemplate.getTEmail().getText());
     this.agregarRegistro(products);
-    sProducts.agregarItem(products);
+    sProducts.addItemA(products);
     restaurarValores();
   }
 
@@ -132,15 +132,15 @@ public class ProductsComponent extends MouseAdapter implements ActionListener, F
     int fSeleccionada = productsTemplate.getTabla().getSelectedRow();
     if (fSeleccionada != -1) {
       productsTemplate.getModelo()
-        .setValueAt(productsTemplate.getTNombreP().getText(), fSeleccionada, 1);
+        .setValueAt(productsTemplate.getTNameP().getText(), fSeleccionada, 1);
       productsTemplate.getModelo()
         .setValueAt(productsTemplate.getTPrice().getText(), fSeleccionada, 2);
       productsTemplate.getModelo()
         .setValueAt(productsTemplate.getTEmail().getText(), fSeleccionada, 3);
-      products = sProducts.devolverItem(fSeleccionada);
-      products.setNombre(productsTemplate.getTNombreP().getText());
-      products.setEdad(productsTemplate.getTSupplier().getText());
-      products.setOficio(productsTemplate.getTOficio().getText());
+      products = sProducts.getItem(fSeleccionada);
+      products.setName(productsTemplate.getTNameP().getText());
+      products.setSupplier(productsTemplate.getTSupplier().getText());
+      products.setOnll(productsTemplate.getTOnll().getText());
       products.setTelefono(productsTemplate.getTPrice().getText());
       products.setEmail(productsTemplate.getTEmail().getText());
       restaurarValores();
@@ -179,7 +179,7 @@ public class ProductsComponent extends MouseAdapter implements ActionListener, F
       .getModelo()
       .addRow(new Object[] {
           products.getId(),
-          products.getNombre(),
+          products.getName(),
           products.getPrice(),
           products.getEmail(),
         }

@@ -6,9 +6,9 @@ public class Products {
 
   public int getId() { return id; }
 
-  public String getNombre() { return nombre; }
+  public String getName() { return nombre; }
 
-  public String getEdad() { return supplier; }
+  public String getSupplier() { return supplier; }
 
   public String getOnll() { return onll; }
 
@@ -20,15 +20,15 @@ public class Products {
     this.id = id;
   }
 
-  public void setNombre(String nombre) {
+  public void setName(String nombre) {
     this.nombre = nombre;
   }
 
-  public void setEdad(String supplier) {
+  public void setSupplier(String supplier) {
     this.supplier = supplier;
   }
 
-  public void setOficio(String onll) {
+  public void setOnll(String onll) {
     this.onll = onll;
   }
 
